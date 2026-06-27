@@ -1,71 +1,131 @@
-# ReadHaven
+<div align="center">
 
-ReadHaven is a full-functional PHP E-commerce web project tailored for buying and selling books. This repository serves as a template for building robust and scalable e-commerce platforms using core PHP, MySQL, HTML, CSS, and JavaScript.
+<pre>
+  _____                _ _    _                     
+ |  __ \              | | |  | |                    
+ | |__) |___  __ _  __| | |__| | __ ___   _____ _ __ 
+ |  _  // _ \/ _` |/ _` |  __  |/ _` \ \ / / _ \ '_ \
+ | | \ \  __/ (_| | (_| | |  | | (_| |\ V /  __/ | | |
+ |_|  \_\___|\__,_|\__,_|_|  |_|\__,_| \_/ \___|_| |_|
+</pre>
 
-## Features
-- **User Authentication:** Sign up, sign in, forgot password, and OTP-based verification.
-- **Product Management:** Admin dashboard to add, update, and manage books.
-- **Shopping Cart & Wishlist:** Fully functional cart and wishlist for users.
-- **Order Management:** Secure checkout, invoice generation, and order history.
-- **Responsive Design:** Mobile-friendly UI using Bootstrap and custom CSS.
-- **Admin Panel:** Manage users, products, orders, and view sales analytics.
+The complete full-functional PHP-based e-commerce web architecture for modern bookstores.
 
-## Tech Stack
-- **Frontend:** HTML5, CSS3, JavaScript, Bootstrap
-- **Backend:** PHP 8
-- **Database:** MySQL
-- **Libraries/Tools:** PHPMailer for email delivery, Chart.js for analytics
+<br />
 
-## Setup Instructions
+[![PHP](https://img.shields.io/badge/PHP-v8.2-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-v8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com/)
+[![Apache](https://img.shields.io/badge/Apache-v2.4-D22128?style=for-the-badge&logo=apache&logoColor=white)](https://httpd.apache.org/)
+[![Docker](https://img.shields.io/badge/Docker-Integrated-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-### Prerequisites
-- [XAMPP](https://www.apachefriends.org/index.html) (or any other local server setup like WAMP/MAMP)
-- PHP 8.0+
-- MySQL
-
-### Standard Setup (Apache & MySQL)
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/ReadHaven.git
-   ```
-2. **Move to Server Directory:** 
-   Move the cloned `ReadHaven` folder to your server's root directory (e.g., `C:\xampp\htdocs\`).
-3. **Database Configuration:**
-   - Open phpMyAdmin (usually `http://localhost/phpmyadmin`).
-   - Create a new database named `ebookstore`.
-   - Import the provided SQL dump (if available) into the `ebookstore` database.
-   - Configure the database connection in `connection.php`:
-     ```php
-     Database::$connection = new mysqli("localhost", "root", "your_password", "ebookstore", "3306");
-     ```
-
-### Dockerized Setup
-You can also run ReadHaven using Docker and Docker Compose. A basic `docker-compose.yml` is included.
-1. Make sure you have Docker and Docker Compose installed.
-2. In the project root, run:
-   ```bash
-   docker-compose up -d
-   ```
-3. Access the application at `http://localhost:8080`.
-4. The MySQL database will be available on port `3306` with root password `rootpassword`.
+</div>
 
 ---
 
-## Mail Configuration Guide
+## Project Overview
 
-ReadHaven uses PHPMailer to send OTP codes and contact forms. Before using the application, you **must** configure your own SMTP credentials.
+**ReadHaven** is a comprehensive web application project focusing on structured backend management, clean separation of concerns, and full e-commerce functionality. Developed as a 1st-year project, it showcases a robust architecture designed for modern bookstores, offering a seamless shopping experience for users and powerful management tools for administrators.
 
-1. Locate the following files in the `back-end` directory:
-   - `admin-authenticate-process.php`
-   - `contact-us-process.php`
-   - `otp-code-resend-process.php`
-   - `send-reset-password-code-process.php`
-2. Open each file and look for the SMTP configuration block.
-3. Replace the placeholder strings with your actual email and App Password:
-   - `<YOUR_EMAIL_HERE>`: Replace with your Gmail address (e.g., `youremail@gmail.com`).
-   - `<YOUR_APP_PASSWORD_HERE>`: Replace with your 16-character Google App Password.
+## Core Features & Tech Stack
 
-> **Note:** Do not use your regular Gmail password. You must generate an **App Password** from your Google Account settings (requires 2-Step Verification to be enabled).
+### Features
+*   **User Authentication**: Secure login, registration, and session management.
+*   **Dynamic Product Catalog**: Browse, search, and filter a vast collection of books.
+*   **Shopping Cart**: Intuitive cart management with real-time updates.
+*   **Secure Checkout**: Streamlined checkout process for finalizing purchases.
+*   **Automated Mail Notifications**: Order confirmations and account alerts powered by PHPMailer.
+*   **Admin Control Panel**: Comprehensive dashboard for managing products, users, and orders.
 
-## License
-This project is open-source and available under the [MIT License](LICENSE).
+### Tech Stack
+*   **Backend**: PHP
+*   **Database**: MySQL
+*   **Frontend**: HTML, JavaScript, Tailwind CSS
+*   **Deployment/Environment**: Docker, Apache
+
+## Local Infrastructure Setup (Standard)
+
+To run ReadHaven locally using a standard setup (XAMPP/WAMP):
+
+1.  **Clone the repository**:
+    ```bash
+    git clone <repository_url>
+    cd readhaven
+    ```
+2.  **Move to Web Root**: Place the project folder inside your web server's document root (e.g., `htdocs` for XAMPP, `www` for WAMP).
+3.  **Database Setup**:
+    *   Open your database management tool (e.g., phpMyAdmin).
+    *   Create a new database named `readhaven`.
+    *   Import the provided `readhaven.sql` file into this new database.
+4.  **Start Server**: Ensure your Apache and MySQL services are running.
+5.  **Access the App**: Navigate to `http://localhost/readhaven` in your web browser.
+
+## Mail Configuration Guide (Crucial Step)
+
+> [!IMPORTANT]
+> To enable automated mail notifications (like order confirmations or password resets), you **MUST** configure the mailer settings.
+
+1.  Locate the mail configuration file in the project directory.
+2.  Open the file and find the SMTP settings.
+3.  Replace the template placeholders with your actual credentials:
+    *   Replace `<YOUR_EMAIL_HERE>` with your Gmail address.
+    *   Replace `<YOUR_APP_PASSWORD_HERE>` with your generated Google App Password. (Do NOT use your regular email password; generate an App Password in your Google Account security settings).
+
+## Dockerized Environment Setup
+
+ReadHaven includes a complete, production-ready Docker configuration for seamless deployment.
+
+### `docker-compose.yml`
+
+Create a `docker-compose.yml` file in the root directory (if not already present) with the following configuration:
+
+```yaml
+version: '3.8'
+
+services:
+  web:
+    image: php:8.2-apache
+    container_name: readhaven-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - readhaven-network
+
+  db:
+    image: mysql:8.0
+    container_name: readhaven-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: readhaven
+      MYSQL_USER: readhaven_user
+      MYSQL_PASSWORD: secretpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      # Optionally mount the SQL dump to auto-import on first start:
+      # - ./readhaven.sql:/docker-entrypoint-initdb.d/readhaven.sql
+    networks:
+      - readhaven-network
+
+networks:
+  readhaven-network:
+    driver: bridge
+
+volumes:
+  db_data:
+```
+
+### Running with Docker
+
+1. Ensure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+2. Open a terminal in the project root directory.
+3. Run the following command to build and start the containers in the background:
+   ```bash
+   docker-compose up -d
+   ```
+4. Access the application at `http://localhost:8080`.
