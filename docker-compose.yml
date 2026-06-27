@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.2-apache
+    container_name: readhaven_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=rootpassword
+      - DB_NAME=ebookstore
+
+  db:
+    image: mysql:8.0
+    container_name: readhaven_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: ebookstore
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
